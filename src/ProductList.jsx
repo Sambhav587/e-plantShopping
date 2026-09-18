@@ -7,14 +7,23 @@ import CartItem from './CartItem';
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false);
+    const [addedToCart, setAddedToCart] = useState({});
 
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart.items);
-
     const totalItems = cartItems.reduce(
         (total, item) => total + item.quantity,
         0
     );
+
+    const handleAddToCart = (plant) => {
+        dispatch(addItem(plant));
+
+        setAddedToCart((prevState) => ({
+            ...prevState,
+            [plant.name]: true,
+        }));
+    };
 
     const plantsArray = [
         {
@@ -392,11 +401,10 @@ function ProductList({ onHomeClick }) {
                                         </p>
 
                                         <button
-                                            onClick={() =>
-                                                dispatch(addItem(plant))
-                                            }
+                                            onClick={() => handleAddToCart(plant)}
+                                            disabled={addedToCart[plant.name]}
                                         >
-                                            Add to Cart
+                                            {addedToCart[plant.name] ? 'Added to Cart' : 'Add to Cart'}
                                         </button>
                                     </div>
                                 ))}
