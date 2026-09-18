@@ -78,7 +78,7 @@ function ProductList({ onHomeClick }) {
                 },
                 {
                     name: "Jasmine",
-                    image: "https://images.unsplash.com/photo-1592729645009-b96d1e63d14b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    image: "https://images.unsplash.com/photo-1592729645009-b96d1e63d14b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wZGF0bGluZ2h0fGVufDB8fHx8fA%3D%3D",
                     description: "Sweet fragrance, promotes relaxation.",
                     cost: "$18"
                 },
@@ -302,6 +302,16 @@ function ProductList({ onHomeClick }) {
                 </div>
 
                 <div style={styleObjUl}>
+                    <div>
+                        <a
+                            href="/"
+                            onClick={(e) => handleHomeClick(e)}
+                            style={styleA}
+                        >
+                            Home
+                        </a>
+                    </div>
+
                     <div>
                         <a
                             href="#plants"
